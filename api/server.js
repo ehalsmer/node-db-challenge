@@ -1,14 +1,20 @@
 const express = require('express');
 const helmet = require('helmet');
 
+const projectsRouter = require('./projects/projects-router');
+const resourcesRouter = require('./resources/resources-router');
+const tasksRouter = require('./tasks/tasks-router');
+
 const server = express();
 
 server.use(helmet());
 server.use(express.json());
 
-const Projects = require('./api/projects/projects-model');
+server.use('/api/projects', projectsRouter);
+server.use('/api/resources', resourcesRouter);
+server.use('/api/tasks', tasksRouter);
 
-// middleware:
+// middleware for puts:
 
 function validateResource(){
     /*
@@ -40,19 +46,6 @@ function validateTask(){
 
 
 
-server.put('/api/resources', (req, res) => {
-
-})
-
-server.get('/api/resources', (req, res) => {
-    Projects.getProjects()
-    .then(response => {
-        res.status(200).json(response)
-    })
-    .catch(error => {
-        res.status(500).json(error)
-    })
-})
 
 
 server.put('/api/projects', (req, res) => {

@@ -6,7 +6,13 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/database.db3'
+      filename: './data/database.db3',
+    //   typeCast: function(field, next) {
+    //     if (field.typeof == 'integer' && field.length == 1) {
+    //         return (field == 1); // 1 = true, 0 = false
+    //     }
+    //     return next();
+    // }
     },
     migrations: {
       directory: './data/migrations'

@@ -1,7 +1,8 @@
 const db = require('../../data/db-config');
 
 module.exports = {
-    getResources
+    getResources,
+    addResource
 }
 
 function getResources(){
@@ -9,4 +10,8 @@ function getResources(){
     .then(resources => {
         return resources
     })
+}
+
+function addResource(resource){
+    return db('resources').insert(resource)
 }

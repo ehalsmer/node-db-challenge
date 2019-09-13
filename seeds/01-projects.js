@@ -1,8 +1,8 @@
 
 exports.seed = function(knex) {
   return knex('projects').insert([
-    {id: 1, name: 'Study database management', description: 'Learn data modeling', completed: true},
-    {id: 2, name: 'Build a DApp', description: 'On Blockstack', completed: false},
-    {id: 3, name: 'Get hired', description: 'As a developer in Lehi, Utah', completed: false}
+    {id: 1, project_name: 'Study database management', project_description: 'Learn data modeling', project_completed: true},
+    {id: 2, project_name: 'Build a DApp', project_description: 'On Blockstack', project_completed: false},
+    {id: 3, project_name: 'Get hired', project_description: 'As a developer in Lehi, Utah', project_completed: false}
   ]);
 };

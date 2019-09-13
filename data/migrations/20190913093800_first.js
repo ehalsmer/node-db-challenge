@@ -2,21 +2,21 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("projects", tbl => {
         tbl.increments();
-        tbl.string('name').notNullable();
-        tbl.text('description')
-        tbl.boolean('completed').notNullable().defaultTo(false);
+        tbl.string('project_name').notNullable();
+        tbl.text('project_description')
+        tbl.boolean('project_completed').notNullable().defaultTo(false);
     })
     .createTable("tasks", tbl => {
         tbl.integer('project_id').unsigned().notNullable().references('id').inTable('projects').onDelete('CASCADE').onUpdate('CASCADE');
         tbl.increments();
-        tbl.text('description').notNullable();
-        tbl.text('notes');
-        tbl.boolean('completed').notNullable().defaultTo(false);
+        tbl.text('task_description').notNullable();
+        tbl.text('task_notes');
+        tbl.boolean('task_completed').notNullable().defaultTo(false);
     })
     .createTable("resources", tbl => {
         tbl.increments();
-        tbl.string('name').notNullable();
-        tbl.text('description');
+        tbl.string('resource_name').notNullable();
+        tbl.text('resource_description');
     })
     .createTable("projectResources", tbl => {
         tbl.integer('project_id').unsigned().notNullable().references('id').inTable('projects').onDelete('CASCADE').onUpdate('CASCADE');

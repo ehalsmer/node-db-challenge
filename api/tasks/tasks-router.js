@@ -4,8 +4,11 @@ const Tasks = require('./tasks-model');
 
 const router = express.Router();
 
-router.put('/', (req, res) => {
-
+router.post('/', (req, res) => {
+    Tasks.addTask(req.body)
+    .then(response => {
+        res.status(200).json(response)
+    })
 })
 
 router.get('/', (req, res) => {

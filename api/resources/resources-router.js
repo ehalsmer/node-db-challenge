@@ -4,8 +4,11 @@ const Resources = require('./resources-model');
 
 const router = express.Router();
 
-router.put('/', (req, res) => {
-
+router.post('/', (req, res) => {
+    Resources.addResource(req.body)
+    .then(response => {
+        res.status(200).json(response)
+    })
 })
 
 router.get('/', (req, res) => {

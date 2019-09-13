@@ -1,7 +1,8 @@
 const db = require('../../data/db-config');
 
 module.exports = {
-    getProjects
+    getProjects,
+    addProject
 }
 
 function getProjects(){
@@ -9,4 +10,8 @@ function getProjects(){
     .then(projects => {
         return projects
     })
+}
+
+function addProject(project){
+    return db('projects').insert(project)
 }
